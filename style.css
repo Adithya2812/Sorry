@@ -1,0 +1,172 @@
+/* Import Poppins font for clean, readable typography */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Clean, modern font */
+    background: linear-gradient(135deg, #f0e6ff, #e6f7ff); /* Soft pastel gradient */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background 0.5s ease; /* Smooth background transition */
+    overflow: hidden; /* Prevent overflow for animations */
+}
+
+/* Container for centered layout */
+.container {
+    text-align: center;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    z-index: 1; /* Above hearts */
+}
+
+/* Heading styles */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+/* Paragraph styles */
+p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+#extra-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#extra-text:not(.hidden) {
+    opacity: 1;
+}
+
+/* Buttons container */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Responsive */
+}
+
+/* Button styles */
+button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px; /* Rounded corners */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background-color: #ddd;
+    color: #333;
+}
+
+button:hover {
+    transform: scale(1.05); /* Slight hover scale */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+#yes-btn {
+    background-color: #a8d5ba; /* Soft green */
+}
+
+#no-btn {
+    background-color: #f4a688; /* Soft orange */
+}
+
+/* Message display */
+#message {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#message:not(.hidden) {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Floating hearts using pure CSS */
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #f4a688; /* Soft color */
+    transform: rotate(45deg);
+    animation: float 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #f4a688;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: -10px;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh) rotate(45deg); opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
+}
+
+/* Hidden class for toggling visibility */
+.hidden {
+    display: none;
+}
+
+/* Glowing effect for YES button after 15 clicks */
+.glow {
+    box-shadow: 0 0 20px rgba(168, 213, 186, 0.6);
+    animation: glow-pulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow-pulse {
+    from { box-shadow: 0 0 20px rgba(168, 213, 186, 0.6); }
+    to { box-shadow: 0 0 30px rgba(168, 213, 186, 0.8); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    p { font-size: 1rem; }
+    button { font-size: 1rem; padding: 10px 20px; }
+    .buttons { gap: 15px; }
+}
